@@ -18,7 +18,7 @@ tmp /= 10, len++;
 
 no = malloc((sizeof(*no) * len) + 1);
 if (!no)
-return NULL;
+return (NULL);
 
 if (!(n % 10))
 no[i] = '0', n /= 10, i++;
@@ -47,7 +47,7 @@ void _eputs(char *str)
 {
 int i = 0;
 
-while(str[i])
+while (str[i])
 _eputchar(str[i]), i++;
 }
 

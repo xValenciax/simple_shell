@@ -115,7 +115,7 @@ EXIT_ST = 127;
 /**
  * sigint_handler - event handler for (CTRL+C) sigint signal
  *
- * @sig: signal 
+ * @sig: signal
  *
  * Return: always void
  */

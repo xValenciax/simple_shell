@@ -19,7 +19,7 @@ return (NULL);
 while (str[cnt])
 cnt++;
 
-dup = malloc((sizeof(*dup) * cnt) + 1);
+dup = malloc((sizeof(*dup) * cnt) +1);
 
 if (dup == NULL)
 return (NULL);
@@ -28,7 +28,7 @@ for (; i < cnt; i++)
 dup[i] = str[i];
 
 dup[i] = '\0';
- 
+
 return (dup);
 }
 
