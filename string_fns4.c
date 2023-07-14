@@ -1,7 +1,7 @@
 #include "main.h"
 
 /**
- * to_str - converts an number to string
+ * to_str - converts a number to a string
  *
  * @n: number to be converted
  *
@@ -10,28 +10,28 @@
 
 char *to_str(unsigned int n)
 {
-  char *no;
-  unsigned int i = 0, tmp = n, len = 0;
+char *no;
+unsigned int i = 0, tmp = n, len = 0;
 
-  while (tmp)
-    tmp /= 10, len++;
+while (tmp)
+tmp /= 10, len++;
 
-  no = malloc((sizeof(*no) * len) + 1);
-  if (!no)
-    return NULL;
-  
-  if (!(n % 10))
-    no[i] = '0', n /= 10, i++;
-  
-  while (n)
-    {
-      no[i] = (n % 10) + '0';
-      n /= 10;
-      i++;
-    }
-  no[i] = '\0';
-  rev_string(no);
-  return (no);
+no = malloc((sizeof(*no) * len) + 1);
+if (!no)
+return NULL;
+
+if (!(n % 10))
+no[i] = '0', n /= 10, i++;
+
+while (n)
+{
+no[i] = (n % 10) + '0';
+n /= 10;
+i++;
+}
+no[i] = '\0';
+rev_string(no);
+return (no);
 }
 
 
@@ -45,10 +45,10 @@ char *to_str(unsigned int n)
 
 void _eputs(char *str)
 {
-  int i = 0;
+int i = 0;
 
-  while(str[i])
-    _eputchar(str[i]), i++;
+while(str[i])
+_eputchar(str[i]), i++;
 }
 
 /**
@@ -61,11 +61,11 @@ void _eputs(char *str)
 
 int _eputchar(char c)
 {
-  return (write(STDERR_FILENO, &c, 1));
+return (write(STDERR_FILENO, &c, 1));
 }
 
 /**
- * rev_string - reveses a string
+ * rev_string - reverses a string
  *
  * @s: string to be reversed
  *
@@ -74,18 +74,18 @@ int _eputchar(char c)
 
 void rev_string(char *s)
 {
-  int str_size = strlen(s), i;
-  char *l = s, *r = (s + str_size - 1);
-  char temp = *l, temp2 = *r;
-  if (str_size == 0)
-    return;
-  for (i = 0; i < str_size / 2; i++)
-    {
-      *l = temp2;
-      *r = temp;
-      temp = *(l + 1);
-      temp2 = *(r - 1);
-      l++;
-      r--;
-    }
+int str_size = strlen(s), i;
+char *l = s, *r = (s + str_size - 1);
+char temp = *l, temp2 = *r;
+if (str_size == 0)
+return;
+for (i = 0; i < str_size / 2; i++)
+{
+*l = temp2;
+*r = temp;
+temp = *(l + 1);
+temp2 = *(r - 1);
+l++;
+r--;
+}
 }
