@@ -42,7 +42,7 @@ return (ret);
 
 unsigned int count_words(char *str)
 {
-unsigned int len = 0, i = 0 ;
+unsigned int len = 0, i = 0;
 
 while (str[i] != '\0')
 {
@@ -69,7 +69,7 @@ char **words = NULL;
 int i = 0, count = 0;
 
 if (!str)
-return NULL;
+return (NULL);
 
 count = count_words(str);
 words = malloc(sizeof(*words) * (count + 1));
@@ -78,7 +78,8 @@ if (!words)
 return (NULL);
 
 tok = strtok(str, " ");
-while (tok && i < count) {
+while (tok && i < count)
+{
 words[i] = tok;
 i++;
 tok = strtok(NULL, " ");
@@ -86,7 +87,7 @@ tok = strtok(NULL, " ");
 
 words[i] = NULL;
 
-return words;
+return (words);
 }
 
 /**
