@@ -77,10 +77,10 @@ return (new_ptr);
 
 void afree(char **arr)
 {
-  int i = 0;
-  
-  while(arr[i])
-    free(arr[i]);
+int i = 0;
+
+while(arr[i])
+free(arr[i]);
 }
 
 /**
