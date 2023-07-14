@@ -68,6 +68,22 @@ return (new_ptr);
 }
 
 /**
+ * afree - fress an array allocated
+ *
+ * @arr: array to be freed
+ *
+ * Return: Always void
+ */
+
+void afree(char **arr)
+{
+  int i = 0;
+  
+  while(arr[i])
+    free(arr[i]);
+}
+
+/**
 * _memset - fils the memory with a constant
 *
 * @s: memory area [array]

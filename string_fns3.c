@@ -16,17 +16,19 @@ int cnt = 0, i = 0;
 if (str == NULL)
 return (NULL);
 
-while (*(str + cnt) != '\0')
+while (str[cnt])
 cnt++;
 
-dup = malloc(cnt *sizeof(*dup) + 1);
+dup = malloc((sizeof(*dup) * cnt) + 1);
 
 if (dup == NULL)
 return (NULL);
 
 for (; i < cnt; i++)
-*(dup + i) = *(str + i);
+dup[i] = str[i];
 
+dup[i] = '\0';
+ 
 return (dup);
 }
 

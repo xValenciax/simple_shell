@@ -53,12 +53,9 @@ return (len);
 
 void _puts(char *str)
 {
-while (*str != '\0')
-{
-_putchar(*str);
-str++;
-}
-_putchar('\n');
+int i = 0;
+while (str[i])
+_putchar(str[i]), i++;
 }
 
 /**
@@ -91,5 +88,5 @@ return (dest);
  */
 int _putchar(char c)
 {
-	return (write(1, &c, 1));
+	return (write(STDOUT_FILENO, &c, 1));
 }
