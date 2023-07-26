@@ -13,7 +13,7 @@
 int run_command(char *args[], char *env[], char *path)
 {
 pid_t cpid = -1;
-int Wstatus, w, retStats = 0, f_accss;
+int Wstatus, retStats = 0, f_accss;
 char *fpath = full_path(args[0], path);
 
 retStats = check_command(fpath, args);
@@ -42,7 +42,7 @@ exit(1);
 
 else
 {
-w = waitpid(cpid, &Wstatus, 0);
+waitpid(cpid, &Wstatus, 0);
 if (WIFEXITED(Wstatus) && WEXITSTATUS(Wstatus) == PERM_DENIED)
 return (PERM_DENIED);
 }
