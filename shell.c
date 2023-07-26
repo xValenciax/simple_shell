@@ -23,13 +23,11 @@ return (ERR_NOT_FOUND);
 f_accss = access(fpath, F_OK);
 if (f_accss != -1)
 cpid = fork();
-
 else
 return (ERR_NOT_FOUND);
 
 if (cpid == -1)
 retStats = ERR_NO_FORK;
-
 else if (cpid == 0)
 {
 if (execve(fpath, args, env) != -1)
@@ -39,12 +37,15 @@ exit(PERM_DENIED);
 exit(1);
 }
 }
-
 else
 {
 waitpid(cpid, &Wstatus, 0);
 if (WIFEXITED(Wstatus) && WEXITSTATUS(Wstatus) == PERM_DENIED)
+{
+if (_strcmp(fpath, args[0]) != 0)
+free(fpath);
 return (PERM_DENIED);
+}
 }
 if (_strcmp(fpath, args[0]) != 0)
 free(fpath);
@@ -78,6 +79,7 @@ free(ret);
 if (_strcmp(args[0], "env") == 0)
 {
 print_env();
+free(env_path);
 return (exec);
 }
 exec = run_command(args, __environ, env_path);
@@ -111,6 +113,8 @@ if (command)
 {
 cnt++;
 new_cmnd = trim_string(command);
+if (new_cmnd && _strcmp(new_cmnd, "exit") == 0)
+free(new_cmnd), free(command), builtin_exit(EXIT_ST);
 if (new_cmnd)
 ret = shell_handler(new_cmnd);
 
@@ -129,6 +133,6 @@ _puts(PROMPT);
 }
 free(command);
 if (IS_ATTY)
-putchar('\n');
+_putchar('\n');
 exit(EXIT_ST);
 }

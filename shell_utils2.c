@@ -106,14 +106,7 @@ exit(status);
 int check_command(char *fpath, char *args[])
 {
 int i = 1, retStats = 0;
-int is_exit = _strcmp(args[0], "exit");
-DIR *dir;
-
-if (!fpath && is_exit)
-return (retStats);
-
-if (!is_exit)
-builtin_exit(args[1] ? atoi(args[1]) : EXIT_ST);
+DIR *dir = NULL;
 
 if (_strstr(fpath, "/bin/ls") && args[1])
 {
@@ -123,8 +116,10 @@ dir = opendir(args[i]);
 if (!dir && !starts_with(args[i], "-"))
 {
 retStats = DIR_NOT_FOUND;
+closedir(dir);
 break;
 }
+closedir(dir);
 i++;
 }
 }
