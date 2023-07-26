@@ -43,11 +43,8 @@ exit(1);
 else
 {
 w = waitpid(cpid, &Wstatus, 0);
-if (WIFEXITED(Wstatus))
-{
-if (WEXITSTATUS(Wstatus) == PERM_DENIED)
+if (WIFEXITED(Wstatus) && WEXITSTATUS(Wstatus) == PERM_DENIED)
 return (PERM_DENIED);
-}
 }
 if (_strcmp(fpath, args[0]) != 0)
 free(fpath);
@@ -130,13 +127,10 @@ free(new_cmnd);
 if (IS_ATTY)
 _puts(PROMPT);
 }
-
 free(command);
 if (IS_ATTY)
 _putchar('\n');
-
 if (!EXIT_ST)
 EXIT_ST = 0;
-
 exit(EXIT_ST);
 }

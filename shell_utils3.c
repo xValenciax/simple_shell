@@ -1,5 +1,15 @@
 #include "main.h"
 
+/**
+ * _puts_denied - prints permission denied error
+ *
+ * @prog_name: name of the running shell
+ * @name: name of the file
+ * @c: count of the command
+ *
+ * Return: Always void
+ */
+
 void _puts_denied(char *prog_name, char *name, unsigned int c)
 {
 char *cnt = to_str(c);
