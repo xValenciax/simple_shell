@@ -91,7 +91,7 @@ return (words);
 }
 
 /**
- * puts_not_found - prints a not_found error msg to stderr
+ * _puts_not_found - prints a not_found error msg to stderr
  *
  * @prog_name: executable file name
  * @name: command name
@@ -123,6 +123,7 @@ EXIT_ST = 127;
 void sigint_handler(__attribute__((unused))int sig)
 {
 _putchar('\n');
-_puts(PROMPT);
-EXIT_ST = 130;
+/* _puts(PROMPT); */
+/* EXIT_ST = 130; */
+exit(130);
 }

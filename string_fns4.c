@@ -89,3 +89,30 @@ l++;
 r--;
 }
 }
+
+/**
+ * starts_with - finds if a string starts with a certain prefix
+ *
+ * @str: the string to test
+ * @pre: the prefix
+ *
+ * Return: 0 (Fails), 1 (Succeeds)
+ */
+
+int starts_with(char *str, char *pre)
+{
+int flag = 0, i = 0, j = 0;
+
+for (; str[i]; i++)
+{
+if (str[i] == pre[j])
+j++;
+else
+break;
+}
+
+if (j == _strlen(pre))
+flag = 1;
+
+return (flag);
+}

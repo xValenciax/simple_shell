@@ -34,7 +34,7 @@ return (dup);
 
 
 /**
- * _strchr - locates a character in a string
+ * _strrchr - locates a character in a string
  *
  * @s: input string
  * @c: character to search for
@@ -43,22 +43,24 @@ return (dup);
  * or NULL if c is not found
  */
 
-char *_strchr(char *s, char c)
+char *_strrchr(char *s, char c)
 {
-int i = 0;
-
-while (*(s + i) != '\0')
-{
-if (*(s + i) == c)
-return (s + i);
-
-i++;
-}
+int i = _strlen(s);
 
 if (c == '\0')
 return (s + i);
 
-return ('\0');
+i--;
+
+while (*(s + i) != '\0')
+{
+if (*(s + i) == c)
+return (s + i + 1);
+
+i--;
+}
+
+return (NULL);
 }
 
 /**
