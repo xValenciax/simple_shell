@@ -95,9 +95,9 @@ return (exec);
 
 int shell(char *prog_name)
 {
-char *command = NULL, *new_cmnd;
+char *command = NULL, *new_cmnd = NULL;
 unsigned int cnt = 0;
-int ret, gtret;
+int ret = 0, gtret = 0;
 size_t n = 0;
 const int IS_ATTY = isatty(STDIN_FILENO);
 
@@ -129,8 +129,6 @@ _puts(PROMPT);
 }
 free(command);
 if (IS_ATTY)
-_putchar('\n');
-if (!EXIT_ST)
-EXIT_ST = 0;
+putchar('\n');
 exit(EXIT_ST);
 }

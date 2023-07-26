@@ -37,6 +37,7 @@ char *trim_string(char *);
 unsigned int count_words(char *);
 void _puts_not_found(char *, char *, unsigned int);
 void _puts_denied(char *, char *, unsigned int);
+void _puts_invalid_exit(char *, char *, unsigned int);
 void sigint_handler(int);
 char *_getenv(char *);
 void builtin_exit(int);
